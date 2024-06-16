@@ -50,7 +50,7 @@ def get_post(id: int, db: Session = Depends(get_db), current_user: int = Depends
     # post = db.query(models.Post).filter(models.Post.id == id).first()
 
     post = db.query(models.Post, func.count(models.Vote.post_id).label("votes")).join(models.Vote, models.Vote.post_id == models.Post.id, isouter=True
-                                                                                      ).group_by(models.Post.id).first()
+                                                                                      ).filter(models.Post.id == id).group_by(models.Post.id).first()
     if not post:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
                             detail=f"post with id: {id} was not found")
