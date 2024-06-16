@@ -50,4 +50,4 @@ app.include_router(vote.router)
 
 @app.get("/")
 def root():
-    return {"message": "Hello World deployed from CI/CD pipeline"}
+    return {"message": "Hello World deployed from CI/CD pipeline - fail test"}
