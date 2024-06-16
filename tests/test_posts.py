@@ -10,7 +10,7 @@ def test_get_all_posts(authorized_client, test_posts):
     posts_map = map(validate, res.json())
     posts_list = list(posts_map)
     assert len(res.json()) == len(test_posts)
-    assert res.status_code == 201  # changed from 200
+    assert res.status_code == 200  # changed from 200
     # assert posts_list[0].Post.id == test_posts[0].id
 
 
